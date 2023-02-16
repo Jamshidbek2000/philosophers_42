@@ -6,59 +6,33 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:21:40 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/13 09:09:46 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/16 08:41:14 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void	*all_alive_check(void *data_p)
-{
-	int	i;
-	t_data	*data;
-	t_philo	*philos;
-
-	data = (t_data *)data_p;
-	philos = data->philos;
-	i = 0;
-	while (true)
-	{
-		if (get_time() - philos[i].last_eat_time > data->die_time)
-		{
-			change_philo_state(&philos[i], DEAD);
-			pthread_mutex_lock(&data->mut_all_alive);
-			data->all_alive = false;
-			pthread_mutex_unlock(&data->mut_all_alive);
-			break ;
-		}
-		i++;
-		if (i == data->nb_philos)
-			i = 0;
-	}
-	return (NULL);
-}
-
-void	sleep_if_id_even(t_philo *philo)
+void	think_if_id_is_even(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		usleep((philo->sleep_time / 2) * 1000);
+	{
+		print_msg(philo->data, philo->id, THINK);
+		ft_usleep((get_eat_time(philo->data) / 2));
+	}
 }
 
-bool	all_alive_and_full_check(t_data *data)
+bool	philo_died(t_philo *philo) // philo checks himself
 {
-	bool	result;
+	bool		result;
+	t_data		*data;
 
-	result = true;
-	pthread_mutex_lock(&data->mut_all_alive);
-	if (data->all_alive == false)
-		result = false;
-	pthread_mutex_unlock(&data->mut_all_alive);
-	if (result == true)
-	{
-		pthread_mutex_lock(&data->mut_nb_full_p);
-		if (data->nb_full_p >= data->nb_meals)
-			result = false;
-		pthread_mutex_unlock(&data->mut_nb_full_p);
+	data = philo->data;
+	result = false;
+	if (get_time() - philo->last_eat_time > get_die_time(data))
+	{		
+		set_philo_state(philo, DEAD);
+		print_msg(data, philo->id, DIED);
+		result = true;
 	}
 	return (result);
 }
@@ -71,18 +45,39 @@ void	*routine(void *philo_p)
 	philo = (t_philo *) philo_p;
 	data = philo->data;
 
-	sleep_if_id_even(philo);
+	update_last_meal_time(philo);
+	// think_if_id_is_even(philo);
 	while (true)
 	{
-		if (!all_alive_and_full_check(philo->data))
+		if (philo_died(philo) || get_philo_state(philo) == DEAD)
 			break ;
-		eat(philo);
-		if (!all_alive_and_full_check(philo->data))
+		if (eat(philo) != 0)
 			break ;
-		ft_sleep(philo);
-		if (!all_alive_and_full_check(philo->data))
+		if (philo_died(philo) || get_philo_state(philo) == DEAD)
 			break ;
-		think(philo); 
+		if (ft_sleep(philo) != 0)
+			break ;
+		if (philo_died(philo) || get_philo_state(philo) == DEAD)
+			break ;
+		if (think(philo) != 0)
+			break ;
 	}
+
+	pthread_mutex_lock(&philo->data->mut_print);
+	// write(1, "\t\tFINISHED\n",11);
+	printf("\t\tPHILO %d exited\n", philo->id);
+	pthread_mutex_unlock(&philo->data->mut_print);
+	
 	return (NULL);
+}
+
+
+void	print_nb_meals_had(t_philo *philo)
+{
+	t_data	*data;
+
+	data = philo->data;
+	pthread_mutex_lock(&data->mut_print);
+	printf("Philo %d ate %d times\n", philo->id, philo->nb_meals_had);
+	pthread_mutex_unlock(&data->mut_print);
 }

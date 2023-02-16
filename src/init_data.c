@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 09:16:17 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/12 10:43:08 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:41:27 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,12 @@ int	init_philos(t_data *data)
 	philos = data->philos;
 	while (++i < data->nb_philos)
 	{
-		// printf("init philo %d\n", i+1);
 		philos[i].data = data;
-		philos[i].die_time = data->die_time;
-		philos[i].sleep_time = data->sleep_time;
-		philos[i].eat_time = data->eat_time;
 		philos[i].id = i + 1;
-		philos[i].nb_meals = data->nb_meals;
 		philos[i].nb_meals_had = 0;
 		philos[i].state = IDLE;
-		pthread_mutex_init(&philos[i].mut_l_m_t, NULL);
 		pthread_mutex_init(&philos[i].mut_state, NULL);
+		pthread_mutex_init(&philos[i].mut_nb_meals_had, NULL);
 	}
 	return (0);
 }
@@ -59,7 +54,7 @@ int	init_philos(t_data *data)
 int	init_data(t_data *data, int argc, char **argv)
 {
 	data->nb_full_p = 0;
-	data->all_alive = true;
+	data->keep_iterating = true;
 	data->nb_philos = ft_atoi(argv[1]);
 	data->die_time = (u_int64_t) ft_atoi(argv[2]);
 	data->eat_time = (u_int64_t) ft_atoi(argv[3]);
@@ -70,10 +65,13 @@ int	init_data(t_data *data, int argc, char **argv)
 	if (wrong_input_check(argc, data) == WRONG_INPUT) // MAYBE DONT NEED
 		return (WRONG_INPUT);
 	
+	pthread_mutex_init(&data->mut_eat_t, NULL);
+	pthread_mutex_init(&data->mut_sleep_t, NULL);
+	pthread_mutex_init(&data->mut_die_t, NULL);
 	pthread_mutex_init(&data->mut_print, NULL);
-	pthread_mutex_init(&data->mut_all_alive, NULL);
-	pthread_mutex_init(&data->mut_nb_meals, NULL);
-	pthread_mutex_init(&data->mut_nb_full_p, NULL);
+	pthread_mutex_init(&data->mut_nb_philos, NULL);
+	pthread_mutex_init(&data->mut_keep_iter, NULL);
+	pthread_mutex_init(&data->mut_start_time, NULL);
 
 	data->philos = malloc(sizeof(t_philo) * data->nb_philos);
 	if (data->philos == NULL)
@@ -81,6 +79,8 @@ int	init_data(t_data *data, int argc, char **argv)
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (data->forks == NULL)
 		return (free(data->philos), MALLOC_ERROR);
-	
+	data->philo_ths = malloc(sizeof(pthread_t) * data->nb_philos);
+	if (data->philo_ths == NULL)
+		return (free(data->philos), free(data->forks), MALLOC_ERROR);
 	return (0);
 }
