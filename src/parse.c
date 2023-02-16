@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:14:32 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/10 11:59:53 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:27:26 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	wrong_input_check(int argc, t_data *data)
 {
 	if (argc == 6 && data->nb_meals < 0)
 		return (WRONG_INPUT);
-	if (data->die_time < 0 || data->eat_time < 0
-		|| data->sleep_time < 0 || data->nb_philos <= 0)
-		return (WRONG_INPUT);
+	// if (data->die_time < 0 || data->eat_time < 0
+	// 	|| data->sleep_time < 0 || data->nb_philos <= 0)
+	// 	return (WRONG_INPUT);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:04:10 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/16 09:45:13 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:26:53 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_msg(t_data *data, int id, char *msg)
 
 	time = get_time() - get_start_time(data);
 	pthread_mutex_lock(&data->mut_print);
-	printf("%llu %d %s\n", time, id, msg);
+	printf("%lu %d %s\n", time, id, msg);
 	pthread_mutex_unlock(&data->mut_print);
 }
 

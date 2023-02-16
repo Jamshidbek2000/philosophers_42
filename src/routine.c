@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:21:40 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/16 08:41:14 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:26:43 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ bool	philo_died(t_philo *philo) // philo checks himself
 void	*routine(void *philo_p)
 {
 	t_philo	*philo;
-	t_data	*data;
 
 	philo = (t_philo *) philo_p;
-	data = philo->data;
-
+ 
 	update_last_meal_time(philo);
 	// think_if_id_is_even(philo);
 	while (true)

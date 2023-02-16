@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:21:01 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/16 09:40:15 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:25:54 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <stdint.h>
 
 # include <stdbool.h>
 

@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:19:00 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/16 09:43:51 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:27:06 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ int	main(int argc, char **argv)
 void	print_data(t_data *data)
 {
 	printf("all alive %d\n", data->keep_iterating);
-	printf("die time %llu\n", data->die_time);
-	printf("sleep time %llu\n", data->sleep_time);
-	printf("eat time %llu\n", data->eat_time);
-	printf("nb meals %d\n", data->nb_meals);
+	// printf("die time %llu\n", data->die_time);
+	// printf("sleep time %llu\n", data->sleep_time);
+	// printf("eat time %llu\n", data->eat_time);
+	// printf("nb meals %d\n", data->nb_meals);
 }
