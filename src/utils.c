@@ -6,11 +6,19 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:04:10 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/16 10:26:53 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:22:01 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+int	handle_1_philo(t_philo *philo)
+{
+	take_left_fork(philo);
+	ft_usleep(get_die_time(philo->data));
+	print_msg(philo->data, philo->id, DIED);
+	return (1);
+}
 
 bool	nb_meals_option(t_data *data)
 {
@@ -39,7 +47,6 @@ void	free_data(t_data *data)
 	pthread_mutex_destroy(&data->mut_print);
 	pthread_mutex_destroy(&data->mut_keep_iter);
 	pthread_mutex_destroy(&data->mut_start_time);
-	
 	free(data->philo_ths);
 	free(data->philos);
 	free(data->forks);
@@ -51,7 +58,8 @@ void	print_msg(t_data *data, int id, char *msg)
 
 	time = get_time() - get_start_time(data);
 	pthread_mutex_lock(&data->mut_print);
-	printf("%lu %d %s\n", time, id, msg);
+	if (get_keep_iter(data))
+		printf("%llu %d %s\n", time, id, msg);
 	pthread_mutex_unlock(&data->mut_print);
 }
 

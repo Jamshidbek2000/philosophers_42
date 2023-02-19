@@ -6,7 +6,7 @@
 #    By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 08:22:06 by jergashe          #+#    #+#              #
-#    Updated: 2023/02/16 10:27:43 by jergashe         ###   ########.fr        #
+#    Updated: 2023/02/18 08:12:36 by jergashe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ SRCS = src/philosophers.c	\
 		src/time.c	\
 		src/utils.c	\
 		src/monitoring.c	\
-		src/eat.c	\
+		src/eat_1.c	\
+		src/eat_2.c	\
 		src/sleep.c	\
 		src/think.c	\
-		src/getters.c	\
+		src/getters_1.c	\
+		src/getters_2.c	\
 		src/setters.c	\
 		
 

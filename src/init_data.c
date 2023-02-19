@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 09:16:17 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/16 09:41:27 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:27:40 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	init_forks(t_data *data)
 int	init_philos(t_data *data)
 {
 	t_philo	*philos;
-	int	i;
+	int		i;
 
 	i = -1;
 	philos = data->philos;
@@ -51,6 +51,20 @@ int	init_philos(t_data *data)
 	return (0);
 }
 
+int	malloc_data(t_data *data)
+{	
+	data->philos = malloc(sizeof(t_philo) * data->nb_philos);
+	if (data->philos == NULL)
+		return (MALLOC_ERROR);
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
+	if (data->forks == NULL)
+		return (free(data->philos), MALLOC_ERROR);
+	data->philo_ths = malloc(sizeof(pthread_t) * data->nb_philos);
+	if (data->philo_ths == NULL)
+		return (free(data->philos), free(data->forks), MALLOC_ERROR);
+	return (0);
+}
+
 int	init_data(t_data *data, int argc, char **argv)
 {
 	data->nb_full_p = 0;
@@ -62,9 +76,8 @@ int	init_data(t_data *data, int argc, char **argv)
 	data->nb_meals = -1;
 	if (argc == 6)
 		data->nb_meals = ft_atoi(argv[5]);
-	if (wrong_input_check(argc, data) == WRONG_INPUT) // MAYBE DONT NEED
+	if (wrong_input_check(argc, argv, data) == WRONG_INPUT)
 		return (WRONG_INPUT);
-	
 	pthread_mutex_init(&data->mut_eat_t, NULL);
 	pthread_mutex_init(&data->mut_sleep_t, NULL);
 	pthread_mutex_init(&data->mut_die_t, NULL);
@@ -72,15 +85,5 @@ int	init_data(t_data *data, int argc, char **argv)
 	pthread_mutex_init(&data->mut_nb_philos, NULL);
 	pthread_mutex_init(&data->mut_keep_iter, NULL);
 	pthread_mutex_init(&data->mut_start_time, NULL);
-
-	data->philos = malloc(sizeof(t_philo) * data->nb_philos);
-	if (data->philos == NULL)
-		return (MALLOC_ERROR);
-	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
-	if (data->forks == NULL)
-		return (free(data->philos), MALLOC_ERROR);
-	data->philo_ths = malloc(sizeof(pthread_t) * data->nb_philos);
-	if (data->philo_ths == NULL)
-		return (free(data->philos), free(data->forks), MALLOC_ERROR);
-	return (0);
+	return (malloc_data(data));
 }

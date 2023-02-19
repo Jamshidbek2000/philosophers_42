@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 09:36:39 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/15 14:39:38 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:32:25 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_usleep(uint64_t time)
 
 	start = get_time();
 	while ((get_time() - start) < time)
-		usleep(time / 10);
+		usleep(500);
 }
 
 u_int64_t	get_time(void)

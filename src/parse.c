@@ -6,37 +6,45 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:14:32 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/16 10:27:26 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:25:48 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	wrong_input_check(int argc, t_data *data)
+int	wrong_input_check(int argc, char **argv, t_data *data)
 {
+	int	i;
+
+	i = 1;
 	if (argc == 6 && data->nb_meals < 0)
 		return (WRONG_INPUT);
-	// if (data->die_time < 0 || data->eat_time < 0
-	// 	|| data->sleep_time < 0 || data->nb_philos <= 0)
-	// 	return (WRONG_INPUT);
+	if (ft_atoi(argv[i]) > 200)
+		return (WRONG_INPUT);
+	while (++i < 5)
+	{
+		if (ft_atoi(argv[i]) < 60)
+			return (WRONG_INPUT);
+	}
 	return (0);
 }
 
-int	negative_input_check(int argc, char **argv) // MAY NOT NEED
+// MAYBE <=
+int	negative_input_check(int argc, char **argv)
 {
 	int	index;
 
 	index = 1;
 	while (index < argc)
 	{
-		if (ft_atoi(argv[index]) < 0) // MAYBE <=
+		if (ft_atoi(argv[index]) < 0)
 			return (WRONG_INPUT);
 		index++;
 	}
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int		count;
 	long	result;
@@ -75,7 +83,6 @@ int	is_input_digit(int argc, char **argv)
 		{
 			if (argv[i][k] < '0' || argv[i][k] > '9')
 			{
-				printf("is_input_digit: i=%d k=%d\n", i, k);
 				return (WRONG_INPUT);
 			}
 			k++;
@@ -89,17 +96,14 @@ int	check_input(int argc, char **argv)
 {
 	if (argc < 5)
 	{
-		printf("check_input argc<5\n");
 		return (WRONG_INPUT);
 	}
 	if (argc > 6)
 	{
-		printf("check_input argc>6\n");
 		return (WRONG_INPUT);
 	}
 	if (is_input_digit(argc, argv) != 0)
 	{
-		printf("check_input is_input_digit\n");
 		return (WRONG_INPUT);
 	}
 	return (0);

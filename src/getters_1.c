@@ -1,46 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getters.c                                          :+:      :+:    :+:   */
+/*   getters_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:47:19 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/15 13:49:52 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:29:32 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
-
-uint64_t	get_die_time(t_data* data)
-{
-	uint64_t	die_time;
-
-	pthread_mutex_lock(&data->mut_die_t);
-	die_time = data->die_time;
-	pthread_mutex_unlock(&data->mut_die_t);
-	return (die_time);
-}
-
-uint64_t	get_sleep_time(t_data* data)
-{
-	uint64_t	sleep_time;
-
-	pthread_mutex_lock(&data->mut_sleep_t);
-	sleep_time = data->sleep_time;
-	pthread_mutex_unlock(&data->mut_sleep_t);
-	return (sleep_time);
-}
-
-uint64_t	get_eat_time(t_data* data)
-{
-	uint64_t	eat_time;
-
-	pthread_mutex_lock(&data->mut_eat_t);
-	eat_time = data->eat_time;
-	pthread_mutex_unlock(&data->mut_eat_t);
-	return (eat_time);
-}
 
 bool	get_keep_iter(t_data *data)
 {
@@ -52,7 +22,7 @@ bool	get_keep_iter(t_data *data)
 	return (keep_iterating);
 }
 
-int		get_nb_philos(t_data *data)
+int	get_nb_philos(t_data *data)
 {
 	int	nb_philos;
 
