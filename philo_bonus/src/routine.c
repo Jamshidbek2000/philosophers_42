@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:25:04 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:15:51 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/03/01 10:46:16 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,22 @@ int	set_philo(t_data *data, int id)
 	char	*sem_name;
 
 	sem_name = create_sem_name(id);
+	if (sem_name == NULL)
+		return (MALLOC_ERROR);
 	sem_unlink(sem_name);
 	data->philo.sem_philo = sem_open(sem_name, O_CREAT, 0644, 1);
 	sem_unlink(sem_name);
 	free(sem_name);
+	set_philo_state(data, IDLE);
 	data->philo.id = id;
-	data->philo.last_eat_time = get_time();
+	update_last_meal_time(data);
 	return (0);
 }
 
 void	sleep_if_id_is_even(t_data *data)
 {
 	if (data->philo.id % 2 == 0)
-		wait_until(data->eat_time - 10 + get_time());
+		ft_usleep(data->eat_time - 10);
 }
 
 bool	should_stop(t_state	state)
@@ -50,10 +53,11 @@ bool	should_stop(t_state	state)
 
 int	start_routine(t_data *data, int id)
 {
-	set_philo(data, id);
+	if (set_philo(data, id))
+		exit(1);
+	sleep_if_id_is_even(data);
 	if (pthread_create(&data->monitor, NULL, &monitor_death, data))
 		return (THREAD_ERROR);
-	sleep_if_id_is_even(data);
 	while (true)
 	{
 		if (eat(data) || should_stop(get_philo_state(data)))
@@ -69,8 +73,9 @@ int	start_routine(t_data *data, int id)
 			break ;
 		}
 	}
-	pthread_join(data->monitor, NULL);
 	sem_close(data->philo.sem_philo);
+	if (pthread_join(data->monitor, NULL))
+		exit(1);
 	exit(0);
 }
 	// sem_wait(data->sem_print);

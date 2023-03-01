@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:21:01 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:13:40 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:30:00 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ bool		philo_died(t_philo *philo);
 // parse.c
 int			check_input(int argc, char **argv);
 int			wrong_input_check(int argc, char **argv);
-int			negative_input_check(int argc, char **argv);
 int			ft_atoi(char *str);
+void		print_instruction(void);
 
 // init_data.c
 int			init_data(t_data *data, int argc, char **argv);

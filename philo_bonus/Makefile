@@ -6,14 +6,14 @@
 #    By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 08:16:20 by jergashe          #+#    #+#              #
-#    Updated: 2023/02/25 11:04:12 by jergashe         ###   ########.fr        #
+#    Updated: 2023/03/01 08:50:53 by jergashe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo_bonus
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror #-g #-fsanitize=thread
 
 SRC_DIR = src/
 OBJ_DIR = objects/

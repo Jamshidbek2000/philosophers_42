@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 14:47:58 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:14:06 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/27 11:28:24 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	is_philo_full(t_data *data, t_philo *philo)
 	return (result);
 }
 
-bool	philo_died(t_philo *philo) // last eat time needs mutex!!!
+bool	philo_died(t_philo *philo)
 {
 	bool		result;
 	t_data		*data;

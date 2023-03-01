@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers_bonus.h                               :+:      :+:    :+:   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:16:23 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:15:49 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/28 09:05:47 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@
 
 typedef enum e_philo_state
 {
-	EATING = 0,
-	DEAD = 1,
-	FULL = 2,
-	IDLE = 3,
-	FINISH = 4,
-	SLEEPING = 5
+	EATING,
+	DEAD,
+	FULL,
+	IDLE,
+	FINISH,
+	SLEEPING
 }	t_state;
 
 struct	s_data;
@@ -102,7 +102,6 @@ int			init_data(t_data *data, int argc, char **argv);
 // time.c
 u_int64_t	get_time(void);
 void		ft_usleep(uint64_t time);
-void		wait_until(u_int64_t wakeup_time);
 
 // getter.c
 uint64_t	get_last_eat_time(t_data *data);
@@ -115,7 +114,8 @@ void		update_last_meal_time(t_data *data);
 
 // print_msg.c
 int			print_msg(t_data *data, char *msg);
-void		print_sem(t_data *data, char *msg);
+void		print_instruction(void);
+void		print_sem(t_data *data, char *str);
 
 // utils.c
 char		*ft_itoa(int n);

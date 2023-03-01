@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 09:16:17 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:14:06 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/03/01 07:56:23 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	init_philos(t_data *data)
 		pthread_mutex_init(&philos[i].mut_state, NULL);
 		pthread_mutex_init(&philos[i].mut_nb_meals_had, NULL);
 		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
+		update_last_meal_time(&philos[i]);
 	}
 	return (0);
 }

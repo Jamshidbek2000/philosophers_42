@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 09:36:39 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:14:06 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/27 11:29:15 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,25 @@
 
 void	wait_until(u_int64_t wakeup_time)
 {
-	const int	margin = 5;
+	int			margin;
 	u_int64_t	time;
 
-	time = get_time();
-	while (wakeup_time - time > margin)
+	margin = 5;
+	while (1)
 	{
-		usleep(1000 * (wakeup_time - time - margin));
 		time = get_time();
+		if (wakeup_time <= time + margin)
+		{
+			while (wakeup_time > time)
+				time = get_time();
+			break ;
+		}
+		else
+		{
+			usleep(1000 * (wakeup_time - time - margin));
+		}
 	}
-	while (wakeup_time > time)
-		time = get_time();
 }
-
 
 void	ft_usleep(uint64_t sleep_time)
 {

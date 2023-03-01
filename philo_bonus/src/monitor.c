@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 09:16:41 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:15:29 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/03/01 07:43:32 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	*monitor_death(void *data_p)
 	t_data	*data;
 
 	data = (t_data *)data_p;
-	wait_until(data->die_time - 50 + get_time());
 	while (should_stop(get_philo_state(data)) == false)
 	{
 		if (someone_died())

@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:35:25 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:15:29 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/28 08:29:36 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	wrong_input_check(int argc, char **argv)
 	i = 1;
 	if (argc == 6 && ft_atoi(argv[5]) <= 0)
 		return (WRONG_INPUT);
-	if (ft_atoi(argv[i]) > 200)
+	if (ft_atoi(argv[i]) < 1 || ft_atoi(argv[i]) > 200)
 		return (WRONG_INPUT);
 	while (++i < 5)
 	{

@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:19:00 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:14:06 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:30:17 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ void	leaks(void)
 int	main(int argc, char **argv)
 {
 	if (check_input(argc, argv) != 0)
+	{
+		print_instruction();
 		return (WRONG_INPUT);
+	}
 	if (philosophers(argc, argv) != 0)
 		return (MALLOC_ERROR);
 	return (0);

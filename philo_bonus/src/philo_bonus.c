@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:16:18 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/27 11:15:29 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:33:51 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ void	leaks(void)
 int	main(int argc, char **argv)
 {
 	if (check_input(argc, argv) != 0)
+	{
+		print_instruction();
 		return (WRONG_INPUT);
+	}
 	philosophers_bonus(argc, argv);
 	return (0);
 }
