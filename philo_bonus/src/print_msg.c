@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:00:16 by jergashe          #+#    #+#             */
-/*   Updated: 2023/03/01 07:43:31 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:38:10 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	print_msg(t_data *data, char *msg)
 
 void	print_instruction(void)
 {
-	printf("\t\tWRONG INPUT!\n\n");
+	printf("\t\t\t\t\t\tWRONG INPUT!\n\n");
 	printf("./philo_bonus nb_philos time_to_die ");
 	printf("time_to_eat time_to_sleep ");
 	printf("number_of_times_each_philosopher_must_eat ");

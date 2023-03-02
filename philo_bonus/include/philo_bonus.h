@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:16:23 by jergashe          #+#    #+#             */
-/*   Updated: 2023/02/28 09:05:47 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:51:34 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_data
 // routine.
 int			start_routine(t_data *data, int id);
 bool		should_stop(t_state	state);
+char		*create_sem_name(int id);
 
 // monitor.c
 void		let_others_know(void);

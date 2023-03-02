@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:25:04 by jergashe          #+#    #+#             */
-/*   Updated: 2023/03/01 10:46:16 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:49:09 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ int	set_philo(t_data *data, int id)
 
 	sem_name = create_sem_name(id);
 	if (sem_name == NULL)
-		return (MALLOC_ERROR);
+		exit(MALLOC_ERROR);
 	sem_unlink(sem_name);
 	data->philo.sem_philo = sem_open(sem_name, O_CREAT, 0644, 1);
 	sem_unlink(sem_name);
 	free(sem_name);
-	set_philo_state(data, IDLE);
 	data->philo.id = id;
 	update_last_meal_time(data);
 	return (0);
@@ -73,9 +72,9 @@ int	start_routine(t_data *data, int id)
 			break ;
 		}
 	}
-	sem_close(data->philo.sem_philo);
 	if (pthread_join(data->monitor, NULL))
 		exit(1);
+	sem_close(data->philo.sem_philo);
 	exit(0);
 }
 	// sem_wait(data->sem_print);

@@ -6,14 +6,14 @@
 #    By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 08:22:06 by jergashe          #+#    #+#              #
-#    Updated: 2023/03/01 08:58:21 by jergashe         ###   ########.fr        #
+#    Updated: 2023/03/02 11:46:17 by jergashe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror #-g #-fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_DIR = src/
 OBJ_DIR = objects/
@@ -42,7 +42,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c 
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -53,5 +53,5 @@ fclean: clean
 	$(RM) $(NAME) 
 
 re: fclean all
-
+#-g #-fsanitize=thread
 .PHONY: all clean fclean re

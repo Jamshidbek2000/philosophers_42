@@ -6,7 +6,7 @@
 /*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:44:34 by jergashe          #+#    #+#             */
-/*   Updated: 2023/03/01 08:47:49 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:11:51 by jergashe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int	init_data(t_data *data, int argc, char **argv)
 		data->nb_meals = ft_atoi(argv[5]);
 	data->philo.data = data;
 	data->philo.nb_meals_had = 0;
+	data->philo.state = IDLE;
 	return (init_semaphores(data));
 }
