@@ -1,10 +1,12 @@
 # philosophers_42
 
 <div align=center> 
-
-	The dining philosophers problem is a classic computer science problem that challenges programmers to design a solution for multiple philosophers without causing a deadlock. 
-
-	In this project I learned to work with multipiple threads that share memory and work on the same memory. Now I know, if a variable is accessed by more than one thread It need a mutex to protect it againt data races.
+	<p>
+		The dining philosophers problem is a classic computer science problem that challenges programmers to design a solution for 	multiple philosophers without causing a deadlock. 
+	</p>
+	<p>
+		In this project I learned to work with multipiple threads that share memory and work on the same memory. Now I know, if a variable is accessed by more than one thread It need a mutex to protect it againt data races.
+	</p>
 </div>
 
 <div>
