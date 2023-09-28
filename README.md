@@ -55,7 +55,7 @@
 I highly recommend watching this <a href="https://www.youtube.com/watch?v=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2">playlist</a> and repeat after him.
 
 ### Explanation
-I am planning to make a video to explain the project.
+<a href="https://www.youtube.com/watch?v=UGQsvVKwe90&pp=ygUPNDIgcGhpbG9zb3BoZXJz">Here's my video explanation.</a>
 <!-- 1. To avoid deadlocks you can:
 	a) Make half of philosophers (philosophers with odd ID) sleep for some time (time_to_eat - 10).
 	b) Make half of philosophers right-handed and the other half left-handed.
