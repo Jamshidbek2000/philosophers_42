@@ -6,6 +6,22 @@ The dining philosophers problem is a classic computer science challenge that req
 ## What have I learned from the project?
 Working with multiple threads was something interesting and new for me. I learned to work with multiple threads that share memory and run concurrently. It taught me the importance of using mutexes to protect shared variables against data races.
 
+## Instructions
+1. cd to philo or philo_bonus
+2. make
+3. For philo: ./philo 4 410 200 200 5 
+	* 4 - number of philos
+	* 410 - time to die
+	* 200 - time to eat
+	* 200 - time to sleep
+	* 5 - number of meals until finishing. Program can run without this argument (./philo 4 410 200 200)
+4. For philo_bonus: ./philo_bonus 4 410 200 200 5 (4 - number of philos, 410 - time to die, 200 - time to eat, 200 - time to sleep, 5 - number of meals until finishing)
+	* 4 - number of philos
+	* 410 - time to die
+	* 200 - time to eat
+	* 200 - time to sleep
+	* 5 - number of meals until finishing. Program can run without this argument (./philo_bonus 4 410 200 200)
+
 ## Used Functions
 
 ### Mandatory Part:
@@ -44,6 +60,11 @@ Working with multiple threads was something interesting and new for me. I learne
 
 I highly recommend watching this [playlist](https://www.youtube.com/watch?v=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2) and repeating after the instructor.
 
+[Phiosophers-visualizer](https://nafuka11.github.io/philosophers-visualizer/) can help you understand how your program is acting.
+<img width="1465" alt="Screen Shot 2023-10-25 at 8 44 28 AM" src="https://github.com/Jamshidbek2000/philosophers_42/assets/106934634/545f16f3-419a-4e73-8788-a6d7b09672c6">
+
 ## Explanation
 
 For a detailed explanation, watch [my video explanation](https://www.youtube.com/watch?v=UGQsvVKwe90&pp=ygUPNDIgcGhpbG9zb3BoZXJz).
+
+<img width="1098" alt="Screen Shot 2023-10-25 at 8 55 00 AM" src="https://github.com/Jamshidbek2000/philosophers_42/assets/106934634/848ffb05-fbfc-416d-ab60-3fee48fc9dda">

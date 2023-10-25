@@ -54,7 +54,7 @@ int	init_philos(t_data *data)
 }
 
 int	malloc_data(t_data *data)
-{	
+{
 	data->philos = malloc(sizeof(t_philo) * data->nb_philos);
 	if (data->philos == NULL)
 		return (MALLOC_ERROR);

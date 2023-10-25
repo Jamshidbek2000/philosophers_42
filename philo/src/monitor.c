@@ -31,7 +31,7 @@ bool	philo_died(t_philo *philo)
 	result = false;
 	if (get_time() - get_last_eat_time(philo) > get_die_time(data)
 		&& get_philo_state(philo) != EATING)
-	{		
+	{
 		set_philo_state(philo, DEAD);
 		result = true;
 	}
@@ -50,9 +50,6 @@ void	notify_all_philos(t_data *data)
 	while (++i < nb_philos)
 		set_philo_state(&philos[i], DEAD);
 }
-// pthread_mutex_lock(&data->mut_print);
-// printf("\t\tnotified philo %d\n", philos[i].id);
-// pthread_mutex_unlock(&data->mut_print);
 
 void	*all_full_routine(void *data_p)
 {
@@ -77,7 +74,6 @@ void	*all_full_routine(void *data_p)
 	return (NULL);
 }
 // usleep(200);
-// print_mut(data, "all_full_routine exited");
 
 //  || (get_philo_state(&philos[i]) == DEAD
 void	*all_alive_routine(void *data_p)
@@ -107,4 +103,3 @@ void	*all_alive_routine(void *data_p)
 	return (NULL);
 }
 // usleep(200);
-// print_mut(data, "all_alive_routine exited");

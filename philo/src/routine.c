@@ -19,6 +19,8 @@ void	*routine(void *philo_p)
 
 	philo = (t_philo *) philo_p;
 	update_last_meal_time(philo);
+	if (philo->id % 2 == 0)
+		ft_usleep(philo->data->eat_time - 10);
 	while (get_philo_state(philo) != DEAD)
 	{
 		if (eat(philo) != 0)
@@ -34,10 +36,6 @@ void	*routine(void *philo_p)
 	}
 	return (NULL);
 }
-	// pthread_mutex_lock(&philo->data->mut_print);
-	// write(1, "\t\tFINISHED\n",11);
-	// printf("\t\tPHILO %d exited\n", philo->id);
-	// pthread_mutex_unlock(&philo->data->mut_print);
 
 void	print_nb_meals_had(t_philo *philo)
 {
@@ -48,12 +46,3 @@ void	print_nb_meals_had(t_philo *philo)
 	printf("Philo %d ate %d times\n", philo->id, philo->nb_meals_had);
 	pthread_mutex_unlock(&data->mut_print);
 }
-
-// void	think_if_id_is_even(t_philo *philo)
-// {
-// 	if (philo->id % 2 == 0)
-// 	{
-// 		print_msg(philo->data, philo->id, THINK);
-// 		ft_usleep((get_eat_time(philo->data) / 2));
-// 	}
-// }
