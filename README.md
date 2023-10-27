@@ -15,7 +15,7 @@ Working with multiple threads was something interesting and new for me. I learne
 	* 200 - time to eat
 	* 200 - time to sleep
 	* 5 - number of meals until finishing. Program can run without this argument (./philo 4 410 200 200)
-4. For philo_bonus: ./philo_bonus 4 410 200 200 5 (4 - number of philos, 410 - time to die, 200 - time to eat, 200 - time to sleep, 5 - number of meals until finishing)
+4. For philo_bonus: ./philo_bonus 4 410 200 200 5
 	* 4 - number of philos
 	* 410 - time to die
 	* 200 - time to eat
