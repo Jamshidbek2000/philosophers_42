@@ -1,6 +1,6 @@
 # Philosophers_42
 
-## What is the project is about?
+## What is the project about?
 The dining philosophers problem is a classic computer science challenge that requires programmers to design a solution for multiple philosophers running without causing a deadlock, each philoospher being a separate thread.
 
 ## What have I learned from the project?
